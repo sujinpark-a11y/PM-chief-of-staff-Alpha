@@ -45,7 +45,7 @@ const MainLayout = () => {
               )}
             >
               <PieChart size={16} />
-              Insights
+              Calendar Insights
             </button>
             <button
               onClick={() => setTab('doc-insights')}
