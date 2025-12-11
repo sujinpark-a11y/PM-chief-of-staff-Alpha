@@ -4,7 +4,7 @@ import { INITIAL_GOALS, INITIAL_EVENTS, IMPORTED_EVENTS, INITIAL_CHAT } from '..
 import { addHours, startOfWeek, addDays, setHours } from 'date-fns';
 
 interface AppContextType extends AppState {
-  setTab: (tab: 'command-center' | 'insights') => void;
+  setTab: (tab: 'command-center' | 'insights' | 'doc-insights') => void;
   addGoal: (title: string) => void;
   updateGoal: (id: string, title: string) => void;
   fixSchedule: () => void;
@@ -31,7 +31,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const [isCalendarLoading, setIsCalendarLoading] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
 
-  const setTab = (tab: 'command-center' | 'insights') => setCurrentTab(tab);
+  const setTab = (tab: 'command-center' | 'insights' | 'doc-insights') => setCurrentTab(tab);
 
   const connectCalendar = async () => {
     setIsCalendarLoading(true);

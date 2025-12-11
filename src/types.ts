@@ -31,7 +31,7 @@ export interface ChatMessage {
 }
 
 export interface AppState {
-  currentTab: 'command-center' | 'insights';
+  currentTab: 'command-center' | 'insights' | 'doc-insights';
   goals: Goal[];
   events: CalendarEvent[];
   chatHistory: ChatMessage[];

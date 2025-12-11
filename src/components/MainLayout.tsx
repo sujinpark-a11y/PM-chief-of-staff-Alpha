@@ -5,8 +5,10 @@ import CalendarView from './CalendarView';
 import ChatPanel from './ChatPanel';
 import InsightsView from './InsightsView';
 import DocReviewModal from './DocReviewModal';
-import { LayoutDashboard, PieChart } from 'lucide-react';
+import { LayoutDashboard, PieChart, FileText } from 'lucide-react';
 import { cn } from '../utils/cn';
+
+import DocInsightsView from './DocInsightsView';
 
 const MainLayout = () => {
   const { currentTab, setTab, isDocModalOpen } = useApp();
@@ -45,6 +47,16 @@ const MainLayout = () => {
               <PieChart size={16} />
               Insights
             </button>
+            <button
+              onClick={() => setTab('doc-insights')}
+              className={cn(
+                "px-4 py-1.5 rounded-md text-sm font-medium transition-all flex items-center gap-2",
+                currentTab === 'doc-insights' ? "bg-white shadow-sm text-indigo-600" : "text-gray-500 hover:text-gray-700"
+              )}
+            >
+              <FileText size={16} />
+              Doc Insights
+            </button>
           </div>
 
           <div className="w-8 h-8 rounded-full bg-gray-200 overflow-hidden">
@@ -71,9 +83,13 @@ const MainLayout = () => {
                 <ChatPanel />
               </div>
             </div>
-          ) : (
+          ) : currentTab === 'insights' ? (
             <div className="h-full overflow-y-auto bg-gray-50 p-8">
               <InsightsView />
+            </div>
+          ) : (
+            <div className="h-full overflow-y-auto bg-gray-50 p-8">
+              <DocInsightsView />
             </div>
           )}
         </main>
